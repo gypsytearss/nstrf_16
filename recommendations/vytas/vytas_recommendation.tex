@@ -1,0 +1,105 @@
+% Cover letter using letter.sty
+\documentclass[12pt]{letter} % Uses 10pt
+\usepackage{graphicx}
+%Use \documentstyle[newcent]{letter} for New Century Schoolbook postscript font
+% the following commands control the margins:
+\topmargin=-1in    % Make letterhead start about 1 inch from top of page
+\textheight=9in  % text height can be bigger for a longer letter
+\oddsidemargin=0pt % leftmargin is 1 inch
+\textwidth=6.5in   % textwidth of 6.5in leaves 1 inch for right margin
+
+\begin{document}
+
+%\signature{Dr. Abdeslam Boularias}           % name for signature
+\longindentation=0pt                       % needed to get closing flush left
+\let\raggedleft\raggedright                % needed to get date flush left
+
+\begin{letter}{}
+
+%\begin{minipage}[b]{0.6\linewidth}
+%{\huge\bf Max Planck Institute for\\ Intelligent Systems}
+%\end{minipage}
+%\hspace{4cm}
+\begin{minipage}[b]{0.3\linewidth}
+\includegraphics[scale=0.2]{irglogo.png}
+\end{minipage}
+
+\medskip\hrule height 1pt
+\begin{flushright}
+\hfill Vytas SunSpiral\\
+\hfill Senior Robotics Researcher \\
+\hfill Intelligent Robotics Group - Intelligent Systems Division \\
+\hfill NASA Ames Research Center \\
+\hfill Email:  vytas.sunspiral@nasa.gov\\
+\hfill Phone:  +1 650-604-4363 \\
+\vspace{0.5cm}
+\hfill Regarding: NASA Space Technology Research Fellowship
+\end{flushright}
+%\vfill % forces letterhead to top of page
+
+\opening{To Whom it may concern,}
+
+\noindent 
+
+It is my pleasure to write this letter of recommendation in support of the NASA Space Technology Research Fellowship  
+application of Colin Rennie, a PhD student in robotics at Rutgers University
+under the supervision of a colleague of mine, Dr. Kostas Bekris. 
+
+Colin spent this past summer, the second summer of his graduate studies, under my
+supervision at NASA Ames Research Center. In the previous semester before his time here, Colin 
+had begun getting up to speed on our ongoing work with tensegrity robotics and 
+had shown to his advisor a growing interest in addressing some of the difficult 
+problems related to planning for such complex systems. This interest combined with
+Colin's aptitude for the subject matter led to his advisor's suggestion that 
+Colin spend the summer at Ames under my supervision -- a suggestion that I 
+was happy to accept.
+
+% What Colin worked on
+Dr. Bekris' group and I have collaborated on projects involving motion planning 
+for tensegrity robots for a couple of years now; first through a graduate student 
+under his supervision, Zakary Littlefield, and more recently by way of Dr. Bekris' 
+Early Career Fellowship award. The progress has gone terrifically, and I'm always 
+excited to talk to their group about progress and brainstorm solutions to any 
+new problems that arise in their research. In our meetings over the past year or so,
+it became clear that their motion planning algorithms can yield very intricate solutions
+even in very complex terrains, but that one of the biggest difficulties they faced
+was the computation needed to receive these solutions and the resulting time that
+computation required. 
+
+This is the problem Colin was excited about addressing. Starting with simpler systems with similar traits,
+such as a physics-based snake robot made up of several identical rigid bodies connected in series
+and actuated at its joints, Colin's research over the summer focused on using 
+machine learning models to determine which combinations of controls for this system 
+were likely to yield desirable overall motions for the system. Then instead of searching
+the whole space of possible controls randomly, the motion planning algorithm would 
+be able to use this model to predict which combinations of controls sent to the system
+would result in motion toward the goal and bias the sampling process toward these predictions. 
+In my contact with their group since this summer, I've been updated that taking this approach 
+to planning with a more complex tensegrity system is now a priority -- and will be a result that I'll 
+be excited to see.
+
+% What I know/like about Colin
+In my interactions with Colin this summer, he showed himself to be a capable young 
+researcher able to take an idea and work through the details and potential difficulties 
+with limited supervision. Specifically, I had a very full lab this summer with 
+several ongoing projects and not much time to spare, but was happy to see that in 
+my update meetings with Colin he would always have made good forward progress, and 
+would always be thinking about the potential upcoming difficulties and how to 
+solve them. At the end of the summer period, Colin presented his initial findings
+to the Intelligent Robotics Group, and I was also impressed by his professionalism 
+and overall ability to communicate scientific research well to a group of his peers.
+
+% Conclusion remarks
+In conclusion, in the time I've known Colin he has proven himself to be both a very capable
+student and a productive and responsible researcher. Furthermore, Colin is someone who draws 
+inspiration from various paradigms in his approach to problems -- a desirable trait and
+something exciting to see in a young researcher. I was happy to supervise him 
+as a visitor to my lab this summer, and I expect very good things from him in the coming years. 
+
+\closing{Sincerely yours,
+\\
+\fromname{Vytas SunSpiral}
+}
+
+\end{letter}
+\end{document}
