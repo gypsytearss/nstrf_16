@@ -83,8 +83,68 @@
 
 \end{center}
 
+%---------------- Introduction ------------------
+%Tethered Robot Importance 
+%Planetary exploration
+%Situations needing tethers for science targets
+%Communications
 
-%---------------- start of document body------------------
+
+%---------------- Proposed Research ------------------
+
+Inspired by the variety of science missions that would be achievable
+using a tethered robot but not using a more traditional wheeled rover, 
+scientific research in this area has produced substantial progress in 
+recent past. This research has focused on several different designs of
+tethered robots including notable examples of an eight-legged walking robot attached to a 
+stationary base and two-wheeled differential drive pairs of tethered robots. Both designs
+feature an actuated winch or spooled tether used for communication and/or 
+stability while repelling uneven and difficult terrain.
+
+%Dante II (& lemur II?)
+The Dante II robot design consisted of eight legs for locomotion and an 
+actuated winch for repelling down steep and difficult terrain. Both actuation 
+mechanisms were attached to 
+a base frame with a sensor arch protruding from the top of the structure. A variety of
+sensing equipment, including a pan/tilt camera and a laser range finder,
+ were attached to the arch in order to retrieve and transmit data from remote
+ locations. In 1994 the system was deployed into Mount Spurr, an active volcano, 
+ in order to record data for further scientific analysis. The robot's control 
+ during this time was a combination of supervised autonomous motions and remote
+ teleoperation. Aside from a failure where the robot incurred a lateral force at its contact
+point with the tether, fell over and was not able to correct itself,
+ the 5-day mission was regarded as a success in showing the capabilities of robotic
+ systems to act as ``surrogate scientists'', exploring where humans would not otherwise
+ be able. 
+
+%Axel platform (+picture)
+%Motion planning solution
+%Problems
+%   Quasi-static, no cable friction with ground assumed
+%   solution is planar, over-simplifying the environment
+%   assumes static anchor point (base unit)
+More recently, NASA's Jet Propulsion Laboratory has been working on a two-wheeled
+differential drive tethered robot, appropriately named ``Axel''. The Axel robot 
+design features collapsible, paddled wheels, making the system more appropriate for longer 
+and more remote missions as this design is more robust to issues such as high-centering and 
+failures such as that encountered by Dante II. The tether mechanism is connected to the axel 
+between the two wheels and is actively spooled as the wheels move relative to the body of the robot. 
+Two variants of the system are presented: one in which Axel is attached to a stationary anchor point, 
+and a second where two Axel robots are tethered together and deployed via a central support beam. 
+
+The open question in either design variation is how to plan autonomous descent and corresponding 
+ascent paths for the deploying tethered Axel robot in uneven, rocky, extra-planetary terrains. 
+A solution framework is presented which projects this complex problem to a two-dimensional plane and, 
+building on foundational work addressing the tether constraint problem from a computational geometry 
+perspective, extends this work to produce ``stable'' paths by deriving equations of motion arising from 
+the constraints of the Axel robot. The resulting algorithm first plans the more difficult ascent path and
+uses this solution to limit its search for viable descent paths lying in the same homotopy class. 
+
+
+
+
+
+%---------------- Proposed Research ------------------
 
 {\bf Introduction \\}
 
