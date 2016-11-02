@@ -107,13 +107,13 @@ stability while repelling uneven and difficult terrain.
 The Dante II robot design consisted of eight legs for locomotion and an 
 actuated winch for repelling down steep and difficult terrain. Both actuation 
 mechanisms were attached to 
-a base frame with a sensor arch protruding from the top of the structure. A variety of
+a base frame with a sensor arch protruding from the top of the structure \ref{dante_design}. A variety of
 sensing equipment, including a pan/tilt camera and a laser range finder,
  were attached to the arch in order to retrieve and transmit data from remote
  locations. In 1994 the system was deployed into Mount Spurr, an active volcano, 
  in order to record data for further scientific analysis. The robot's control 
  during this time was a combination of supervised autonomous motions and remote
- teleoperation. Aside from a failure where the robot incurred a lateral force at its contact
+ teleoperation \ref{dante_results}. Aside from a failure where the robot incurred a lateral force at its contact
 point with the tether, fell over and was not able to correct itself,
  the 5-day mission was regarded as a success in showing the capabilities of robotic
  systems to act as ``surrogate scientists'', exploring where humans would not otherwise
@@ -124,10 +124,10 @@ More recently, NASA's Jet Propulsion Laboratory has been working on a two-wheele
 differential drive tethered robot, appropriately named ``Axel''. The Axel robot 
 design features collapsible, paddled wheels, making the system more appropriate for longer 
 and more remote missions as this design is more robust to issues such as high-centering and 
-failures such as that encountered by Dante II. The tether mechanism is connected to the axel 
+failures such as that encountered by Dante II \ref{axel_design}. The tether mechanism is connected to the axel 
 between the two wheels and is actively spooled as the wheels move relative to the body of the robot. 
 Two variants of the system are presented: one in which Axel is attached to a stationary anchor point, 
-and a second where two Axel robots are tethered together and deployed via a central support beam (``DuAxel''). 
+and a second where two Axel robots are tethered together and deployed via a central support beam (``DuAxel'') \ref{duaxel}. 
 
 %Motion planning solution
 The open question in either design variation is how to plan autonomous descent and corresponding 
@@ -135,7 +135,7 @@ ascent paths for the deploying tethered Axel robot in uneven, rocky, extra-plane
 A solution framework is presented which projects this complex problem to a two-dimensional plane and, 
 building on foundational work addressing the tether constraint problem from a computational geometry 
 perspective, extends this work to produce ``controllable'' paths by deriving equations of motion arising from 
-the constraints of the Axel robot. The resulting algorithm first plans the more difficult ascent path and
+the constraints of the Axel robot \ref{axel_planning}. The resulting algorithm first plans the more difficult ascent path and
 uses this solution to limit its search for viable descent paths lying in the same homotopy class. 
 
 %Problems
@@ -161,7 +161,8 @@ full workspace, i.e., without directly simplifying the problem to a lower dimens
 for kinodynamic, as opposed to quasi-static, solutions. We aim to plan for tethered pairs of robots 
 such as the DuAxel configuration as it provides additional freedom and therefore much richer solutions. 
 As such, we consider optimization of the constraints of the system (i.e., placement and support of the tether) 
-to be a subproblem.}
+to be a subproblem. Importantly, since we will be operating with imperfect information about the terrain, we also 
+desire a coordinated strategy for planning and control which optimizes the amount of time needed to re-plan. }
 % TODO: Add online as a goal in presence of imperfect information about the environment
 
 {\bf Problem Description \\}
@@ -177,16 +178,16 @@ We also imagine both robots to be equipped with a means of sensing forces impart
 {\sl Goal: Given that the main constraint of our planning problem is the tether itself, we first 
 address the subproblem of optimal placement and control of the tether with respect to the planning of 
 a coordinated ascent/descent for our tethered pair. }
-% \begin{wrapfigure}{r}{0.5\textwidth}
-%   \begin{center}
-%     \vspace{-0.5in}
-%     \includegraphics[width=0.48\textwidth, right]{cave_exploration}
-%   \end{center}
-%   \vspace{-0.5in}
-%   \label{fig:cave}
-%   \caption{A base rover (orange) has deployed an exploratory rover counterpart (blue) into a cave to achieve scientific mission objectives. Pictured, while in route to the mission objective region, the tethered communications cable becomes snagged on an unknown obstacle.}
-% \end{wrapfigure}
-% \vspace{-0.15in}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \vspace{-0.5in}
+    \includegraphics[width=0.48\textwidth, right]{cave_exploration}
+  \end{center}
+  \vspace{-0.5in}
+  \label{fig:cave}
+  \caption{A base rover (orange) has deployed an exploratory rover counterpart (blue) into a cave to achieve scientific mission objectives. Pictured, while in route to the mission objective region, the tethered communications cable becomes snagged on an unknown obstacle.}
+\end{wrapfigure}
+\vspace{-0.15in}
 
 % ONLINE: scaling unforeseen obstacles while executing descents
 %     Additionally, this divides our solution homotopy class -- must be integrated with planning
@@ -196,7 +197,7 @@ a coordinated ascent/descent for our tethered pair. }
 % Outline the problems
 In the following, we consider several potentially difficult situations that are likely 
 to arise when planning for this system with imperfect information about the terrain. The classic problem 
-of an unmodeled obstacle arising during descent is addressed in the planar case in \ref{}, however beyond 
+of an unmodeled obstacle arising during descent is addressed in the planar case in \ref{axel_online}, however beyond 
 simply addressing this problem in the full taskspace, we 
 desire a solution with two important differences: (1) we desire a re-planning mechanism which exploits 
 our control over the tether and (2) we would like to integrate feedback from the re-planning problem 
@@ -242,16 +243,16 @@ removing a substantial constraint on the new motion planning problem.
 are only possible if we address the planning problem in its full state space. By doing so, we move away from quasi-static 
 solutions and are free to take full advantage of additional features of the system, e.g., kinodynamic planning for the mother
 robot. }
-% \begin{wrapfigure}{r}{0.5\textwidth}
-%   \begin{center}
-% 	\vspace{-0.5in}	
-% 	\includegraphics[width=0.48\textwidth, left]{cable_uncertainty}
-%   \end{center}
-%   \vspace{-0.5in}
-%   \label{fig:cable}
-%   \caption{Employing coordinated control between base and exploratory rovers, we are able to relieve the snagged cable (green arrow) but in doing so are left with uncertainty about where the cable now lies (blue region).}
-% \end{wrapfigure}
-% \vspace{-0.15in}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+	\vspace{-0.5in}	
+	\includegraphics[width=0.48\textwidth, left]{cable_uncertainty}
+  \end{center}
+  \vspace{-0.5in}
+  \label{fig:cable}
+  \caption{Employing coordinated control between base and exploratory rovers, we are able to relieve the snagged cable (green arrow) but in doing so are left with uncertainty about where the cable now lies (blue region).}
+\end{wrapfigure}
+\vspace{-0.15in}
 
 %Problem
 For reasons included throughout this proposal, we desire to move away from quasi-static solutions and 
@@ -265,7 +266,7 @@ be able to reach.
 %Solution Sampling-based
 Equipped with a model of the cable's dynamics, we have all the tools necessary to address this problem 
 using traditional sampling-based motion planning methods, which have been successfully applied to solve similarly 
-high dimensional problems \ref{}. The typical complaint with these methods, however, is the required time and 
+high dimensional problems \ref{zak_kino}. The typical complaint with these methods, however, is the required time and 
 computation required to randomly sample enough points to converge to a solution. Considering that we require 
 methods to be able to re-plan in situations such as the above, our desire is to substantially decrease the amount of time 
 required to find solutions, while still addressing this problem in its full state space. 
@@ -279,7 +280,7 @@ a 2D projection first, define a broad mapping from 2D space back to the full con
 in the full space. 
 
 Additionally, it could be possible that by dissecting the problem into multiple subproblem manifolds we can achieve reliable 
-solutions much faster than in the full space. This could involve applying machine learning as in \ref{}, where the authors 
+solutions much faster than in the full space. This could involve applying machine learning as in \ref{learning_biases}, where the authors 
 train a machine learning model to learn the important sub-manifolds of a particular system while also learning which static 
 configurations (``biases'') for the static state dimensions would be most effective for solving the current problem. 
 
@@ -293,7 +294,7 @@ configurations (``biases'') for the static state dimensions would be most effect
 % ----------------end of document body---------------------
 
 %---------------- start of references------------------
-
+\newpage
 \bibliographystyle{ieeetr}
 \small{\bibliography{bibl.bib}}
 
