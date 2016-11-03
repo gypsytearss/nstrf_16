@@ -1,17 +1,18 @@
-move away from duaxel specifically, integrate lemur
-define kinodynamic
-simple explanations
-clear applications 
-integration -> map update
+X	move away from duaxel specifically, integrate lemur
+X	define kinodynamic
+X	simple explanations
+X	clear applications 
+X	integration -> something else
+X	stop repeating advocacy of design of robot
+X	less hypothetical, more evaluating different ideas 
+X	frame as two moving down the same slope
+X	No kinodynamic in title
+X	Goal statements are confusing
+X	problems are a little mixed
+X	avoid mother/daughter -- use different terminology
+X	non-confusing introduction sentences
+
 full task/workspace -> "reasoning about dynamics"
-stop repeating advocacy of design of robot
-less hypothetical, more evaluating different ideas 
 frame the problem more clearly 
 emphasize two moving robots
-frame as two moving down the same slope
-No kinodynamic in title
-Goal statements are confusing
-problems are a little mixed
-avoid mother/daughter -- use different terminology
 can add research group strength statement in planning 
-non-confusing introduction sentences
