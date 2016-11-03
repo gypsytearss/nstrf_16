@@ -82,7 +82,7 @@
 \newpage
 
 \begin{center}
-{\bf Coordinated Planning and Control for\\ Teams of Tethered Space Exploration Rovers }
+{\bf Coordinated Planning and Control for \\ Tethered Robot Pairs }
 
 \end{center}
 \vspace{-.1in}
@@ -107,13 +107,12 @@ point in the environment \kostas{[references]} or, even more
 desirably, connects to another rover vehicle of equal capability. A
 tethered team of space exploration rovers benefits from the stability
 that a tether can provide while rappelling down difficult terrains.  A
-team also provides added robustness, where the robots can move one to
-the location of the other to provide assistance. For example, holding
-robots can reconfigure to provide maximal stability to those
-descending steep terrain or they can descend down in order to help in
-case of immobility. Furthermore, robots can swap roles between (1)
-providing stability to others and (2) traversing the terrain,
-depending on sensing input. This will allow a tethered team to safely
+team also provides added robustness, where either robot can move to
+the location of the other to provide assistance. The team is also 
+able to reconfigure to provide maximal stability to the actively 
+descending rover. Furthermore, robots can swap roles between (1)
+providing stability to their counterparts and (2) traversing the terrain,
+depending on sensing input. These benefits allow a tethered team to safely
 traverse difficult terrain well beyond what a single anchored robot
 could achieve.
 
@@ -153,13 +152,14 @@ could achieve.
 
 \noindent {\bf Objective:} This report proposes viable solutions for
 two key and related problems for effective tethered robotic teams.
-Such progress can significantly improve tethered robot technology for
+Progress in these directions can significantly improve tethered robot 
+technology for
 planetary exploration: (a) coordinated control for reconfiguring a
 tether between a pair of rovers to deal with unforeseen terrain
 challenges, where both robots actively participate in this process,
 and (b) a planning framework that utilizes the control strategy as a
 module for coordinated descent or ascent of difficult terrain for a
-tethered robotic teams.  These solutions should be general enough to
+tethered robotic team.  These solutions should be general enough to
 be platform-independent and apply to other space critical
 applications. For example, a tethered team of Robonauts, Valkyries or
 other humanoid robots could utilize such solutions during a repair
@@ -253,16 +253,13 @@ via a central support beam (``DuAxel'') \cite{duaxel}.
 
 A key challenge in either design variation was how to plan autonomous
 descent and corresponding ascent paths for the deployed, tethered Axel
-robot in uneven, rocky, extra-planetary terrains.  A solution
+robot in rocky extra-planetary terrains.  A solution
 framework was presented which projected this complex problem to a
 two-dimensional plane. It built on foundational work addressing the
 tether constraint problem from a computational geometry perspective
 \cite{ties_that_bind, min_homotopies} and extended this approach to
 produce ``controllable'' paths by deriving equations of motion arising
-from the constraints of the Axel robot \cite{axel_planning}.  The
-problem addressed in this work was that of planning a single mission,
-consisting of a descent and corresponding ascent, while being
-stabilized by a tether attachment to a static anchor point.  The
+from the constraints of the Axel robot \cite{axel_planning}. The
 resulting algorithm first plans the more difficult ascent path and
 then uses the solution to limit its search for viable descent paths
 lying in the same homotopy class.
@@ -284,9 +281,9 @@ Furthermore, it remains an open question as to how best to plan
 autonomous motions for the DuAxel configuration where two dynamic
 robots take turns belaying each other.
 
-\kostas{it seems to me that you are not describing any of the (non-NASA)
-  references that I forwarded you about planning for tethered robots -
-you didn't find them useful?}
+% \kostas{it seems to me that you are not describing any of the (non-NASA)
+%   references that I forwarded you about planning for tethered robots -
+% you didn't find them useful?}
 
 %-----------------------------------------------------
 %---------------- Proposed Research ------------------
@@ -312,12 +309,20 @@ robots but can be generalized to larger teams. The high-level approach
 is applicable to varying types of tethered rovers provided that they
 have a means of: (1) actuating the tether at its contact points with
 each rover, and (2) measuring the forces exerted on each rover at the
-tether's contact points. The most similar existing system, which could
-utilize such solutions, is the DuAxel design, which fits these
+tether's contact points. The most similar existing system which could
+utilize such solutions is the DuAxel rover design, which fits these
 specifications already. Nevertheless, one can also apply this approach
 to a pair of Lemur IIb robots free-climbing a vertical and jagged
 cliff face or even a pair of traditional wheeled rovers descending a
 steep and rocky mountainside.
+
+%TABS Roadmap applicability
+As this proposal is developed with the overall goal of providing more robust and 
+capable algorithms for extra-planetary exploration, we believe it has primary 
+applicability to the technology goals of TABS 4.5.7 (and relatedly, TABS 4.2.6). 
+An inextricable portion of the proposed technology also aims to progress 
+research in multi-agent coordination. As such, we believe there is a strong 
+connection with the technology goals of TABS 4.5.4 as well.  
 
 %---------------- Research Problem 1 ------------------
 
@@ -374,7 +379,7 @@ forces exerted by the induced wave on the counterpart robot.  We would
 then use this model in the context of a model predictive control
 approach, where the low-level control policy optimizes its current
 control with respect to counteracting the incurred force over a finite
-time horizon of future predictions. The second direction, involves
+time horizon of future predictions. The second direction involves
 exploring model-free approaches (e.g., designing an admittance
 controller), as it's possible that reacting to forces incurred is a
 more feasible solution than accurately predicting them ahead of time.
@@ -385,7 +390,7 @@ In the ``reevaluation'' case of encountering an unmodeled obstacle in our
 path, what we must first decide is whether or not we can configure our
 tether such that we are able to place the tether in an arbitrary
 configuration on either side of the obstacle once we have moved past
-it. The reason we need to know this before moving forward is that
+it. The reason being that
 while the unmodeled obstacle may not cause significant problems for
 our current rover's descent, planning the current stabilizing rover's
 traversal of the same slope is much more constrained as it does not
@@ -458,7 +463,7 @@ successfully applied to solve similarly high-dimensional problems with
 complex kinematic and dynamic constraints \cite{zak_kino}. A typical
 limitation with these methods, however, is the relatively high
 computation requirements to sample enough states to converge to a
-high-quality solution. Considering that that the objective is to
+high-quality solution. Considering that the objective is to
 dynamically replan so as to respond to sensing input, an objective of
 this work is to decrease the amount of time required to find solutions
 while still addressing this problem in the full state space of the
@@ -472,13 +477,14 @@ utilize key aspects of this specific challenge. For example, by
 computing the ``most stable'' support position of the stabilizing
 rover (i.e., perpendicular to the current position of the exploratory
 rover) and biasing the sampling process toward the subset of the state
-space with this properties. This work will explore whether or not it
+space with this property. 
+
+This work will explore whether or not it
 is effective to project the problem from the full state space, which
 may be very high-dimensional, depending on the degrees of freedom of
 the involved robots, to appropriate lower-dimensional task space
-projections.
-
-The problem may potentially be dissected into multiple subproblem
+projections. For example, the problem may potentially be dissected 
+into multiple subproblem
 manifolds, where it may be possible to achieve reliable solutions much
 faster than in the full state space. In certain cases, this has been
 achieved through use of machine learning techniques, where it is
@@ -488,14 +494,26 @@ static configurations for other state dimensions would be most
 effective for solving the complete problem \cite{learning_biases}.
 
 
-\kostas {
-  {\bf Beyond these research problems:}
+% \kostas {
+%   {\bf Beyond these research problems:}
+%   Describe how you can go from a pair of robots to multiple robots and
+%   how this could also be applied to the case of a robot-human team
+%   (additional complexities in this case). 
+% }
+{\bf\noindent Visiting Technologist Experience}
 
-  Describe how you can go from a pair of robots to multiple robots and
-  how this could also be applied to the case of a robot-human team
-  (additional complexities in this case). 
+In making progress toward the stated objectives of this research, hands-on experience with NASA 
+engineers at a NASA research center would be invaluable. Observing and interacting with the most promising 
+rover prototypes currently in development would allow my efforts in modeling these systems to be as accurate 
+and share as many traits as possible. Working with the mechanical engineers building these systems would 
+allow me crucial insight into the capabilities and limitations of current prototypes and would promote 
+faster dissemination of inter-disciplinary ideas. Beyond benefits directly to the research, these experiences 
+would be tremendously beneficial to my own education as a scientist. 
 
-}
+Many of the systems (Axel II, DuAxel, Lemur IIb) mentioned in this paper were developed and tested at NASA 
+JPL, which would make this location an ideal candidate for visiting experience. However, as the ideas presented here 
+are largely independent of the platform, I believe it could also be beneficial to work with systems and 
+engineers at NASA Ames (Tensegrity robots, KRex) or Johnson Space Center (Robonaut 2).
 
 
 % ----------------end of document body---------------------
