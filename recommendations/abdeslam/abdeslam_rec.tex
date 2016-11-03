@@ -1,0 +1,88 @@
+% Cover letter using letter.sty
+\documentclass[11pt]{letter} % Uses 10pt
+\usepackage{graphicx}
+%Use \documentstyle[newcent]{letter} for New Century Schoolbook postscript font
+% the following commands control the margins:
+\topmargin=-1in    % Make letterhead start about 1 inch from top of page
+\textheight=9in  % text height can be bigger for a longer letter
+\oddsidemargin=0pt % leftmargin is 1 inch
+\textwidth=6.5in   % textwidth of 6.5in leaves 1 inch for right margin
+
+\begin{document}
+
+%\signature{Dr. Abdeslam Boularias}           % name for signature
+\longindentation=0pt                       % needed to get closing flush left
+\let\raggedleft\raggedright                % needed to get date flush left
+
+\begin{letter}{}
+
+%\begin{minipage}[b]{0.6\linewidth}
+%{\huge\bf Max Planck Institute for\\ Intelligent Systems}
+%\end{minipage}
+%\hspace{4cm}
+\begin{minipage}[b]{0.3\linewidth}
+\includegraphics[scale=0.1]{Rutgers-logo.jpg}
+\end{minipage}
+
+\medskip\hrule height 1pt
+\begin{flushright}
+\hfill Prof. Abdeslam Boularias\\
+\hfill Assistant Professor\\
+\hfill Computer Science Department \\
+\hfill Email: abdeslam.boularias@cs.rutgers.edu \\
+\hfill Phone: 848-445-8848\\
+\vspace{0.5cm}
+\hfill Regarding: NASA Space Technology Research Fellowship
+\end{flushright}
+%\vfill % forces letterhead to top of page
+
+\opening{Dear Fellowship Committee,}
+
+\noindent 
+
+It is my pleasure to endorse and recommend this very bright and gifted Rutgers University PhD student, 
+Colin Rennie, for his exceeding eligibility for the NASA Space Technology Research Fellowship.
+
+When I began as Assistant Professor at Rutgers in Summer of 2015, Colin was one of the first students I met.
+Since that time, I've had the opportunity and great pleasure of working closely with Colin in his role as Teaching Assistant
+for my ``Introduction to Artificial Intelligence'' course last fall, where he proved himself to be
+diligent, reliable, hard-working, and a good communicator in his interactions with students. Colin was such 
+an exceptional help in this course that I personally requested to have him as the TA for my graduate Seminar
+in Robotic Learning the following semester. Since then I've had the opportunity to work with him on a number of
+research efforts and software development projects, including large-scale and long-duration projects 
+such as our efforts with building a system to compete in the Amazon Picking Challenge. Through these experiences
+I've come to believe his potential as both a an engineer and a young researcher to be substantial. 
+
+One of the most prominent qualities that Colin displays throughout his work, whether he is tutoring students 
+for a class or working on his research, is a sense of maturity. In my classes he was tasked with teaching the 
+material to students of varying age groups and incoming skill levels. He did so with a level of patience and 
+empathy that, in my opinion, is largely uncommon in graduate studies. This is something that students and I 
+both appreciated about having Colin around. 
+
+Colin is extremely dutiful when it comes to his own obligations. Aside from balancing a demanding graduate-level 
+research agenda, classes, and TA duties, I've never known him to be either late or unprepared for a meeting. 
+He has always researched the topics to be discussed and is ready to add his perspective to the discussion. 
+Colin shows up at lab every morning, and often times stays well into the night -- whether meeting a deadline 
+or working on his own research.  
+
+Beyond facilitating productive discussion, Colin strikes me as the type of person who is genuinely excited to 
+take on new efforts and extend his current research efforts in new directions. The idea of learning-by-experimenting 
+is not lost on him, and he welcomes opportunities to broaden his knowledge base through in-depth experience with 
+new and different ideas and experiences.
+
+Overall I would say that Colin's qualities as an individual qualify him as a very well-rounded person, while his 
+dedication to and the fulfillment he seems to get out of his own research and studies make him a very promising 
+researcher. 
+
+Based on my numerous experiences with him over the past year and a half and for the reasons outlined above, I am 
+able to wholeheartedly and without hesitation recommend Colin Rennie for this award. Colin is very bright and capable, 
+enthusiastic about what he's doing, and enjoyable to work with. He would be an asset to any research project. 
+
+
+\closing{Sincerely yours,
+\fromsig{\includegraphics[scale=1,angle=180]{AbdeslamBoulariasSignature}}\\
+\fromname{Prof. Abdeslam Boularias}
+}
+
+\end{letter}
+\end{document}
