@@ -103,12 +103,12 @@ easily achieved by humans nor the current generation of planetary
 rovers. This shortcoming of current exploratory technology has spurred
 considerable interest in the development of next generation rover
 designs featuring a tether that either connects the rover to a static
-point in the environment \kostas{[references]} or, even more
+point in the environment \cite{axel_planning, dante_results, 
+dante_design} or, even more
 desirably, connects to another rover vehicle of equal capability. A
 tethered team of space exploration rovers benefits from the stability
-that a tether can provide while rappelling down difficult terrains.  A
-team also provides added robustness, where either robot can move to
-the location of the other to provide assistance. The team is also 
+that a tether can provide while rappelling down difficult terrains. 
+The team is also 
 able to reconfigure to provide maximal stability to the actively 
 descending rover. Furthermore, robots can swap roles between (1)
 providing stability to their counterparts and (2) traversing the terrain,
@@ -147,7 +147,7 @@ could achieve.
   \vspace{-0.1in}
   \caption{(a) The Axel II rover prototype (b) Two Axel II rovers in DuAxel configuration 
   with support structure (c) Lemur IIb autonomous climbing robot (d) Dante II robot exploring a 
-  volcanic crater. \kostas{[references]}}
+  volcanic crater. Images: \cite{duaxel, lemur_design, dante_results}.}
 \end{wrapfigure}
 
 \noindent {\bf Objective:} This report proposes viable solutions for
@@ -188,20 +188,15 @@ the overhang safely.
 
 %Dante II (& lemur II?)
 
-The Dante II robot design consisted of eight legs for locomotion and
-an actuated winch used for rappelling down steep and difficult terrain
-from a static anchor point.  Both actuation mechanisms were attached
-to a base frame with a sensor arch protruding from the top of the
-structure \cite{dante_design}. A variety of sensing equipment,
-including a pan/tilt camera and a laser range finder, were attached to
-the arch in order to retrieve and transmit data from remote
-locations. In 1994 the system was deployed into Mount Spurr, an active
+The Dante II robot design consisted of eight legs for locomotion, an actuated 
+winch used for rappelling down steep and difficult terrain
+from a static anchor point, and a variety of sensing equipment for data 
+retrieval \cite{dante_design}.  
+In 1994 the system was deployed into Mount Spurr, an active
 volcanic site, in order to record data for further scientific
-analysis. The robot's control during this time was a combination of
-supervised autonomous motions and remote teleoperation
-\cite{dante_results}. During the mission the robot suffered from a
+analysis. During the mission the robot suffered from a
 failure where the robot incurred a lateral force at its contact point
-with the tether, fell over, and was not able to correct itself. Apart
+with the tether, fell over, and was not able to correct itself \cite{dante_results}. Apart
 from this occurrence, however, the 5-day mission was regarded as a
 success in showing the capabilities of tethered robotic systems to act
 as ``surrogate scientists''; exploring where humans would not
@@ -231,27 +226,25 @@ otherwise be able.
   \vspace{-0.1in}
   \caption{(a) Conceptualized descent terrain for Axel II mission (b) example projection of terrain to 2D plane
   (c) example solution: viable controllable regions for ascent (shaded), naive shortest path (red), shortest path within 
-  viable homotopy class (green). }
+  viable homotopy class (green). Images: \cite{ axel_planning}. }
 \end{wrapfigure}
 
 %Axel platform (+picture)
 
-More recently, NASA's Jet Propulsion Laboratory has been working on a
+More recently, NASA's Jet Propulsion Laboratory (JPL) has been working on a
 two-wheeled differential drive tethered robot, appropriately named
 ``Axel''. The Axel II robot design features collapsible, paddled
 wheels, making the system more appropriate for longer and more remote
 missions as this design is more robust to issues such as
 high-centering and failures such as that encountered by Dante II
-\cite{axel_design}. The tether mechanism is connected to the axle
-between the two wheels and is actively spooled as the wheels move
-relative to the body of the robot.  Two variants of the system are
+\cite{axel_design}. Two variants of the system are
 presented: one in which Axel is attached to a stationary anchor point,
 and a second where two Axel robots are tethered together and deployed
 via a central support beam (``DuAxel'') \cite{duaxel}.
 
 %Motion planning solution
 
-A key challenge in either design variation was how to plan autonomous
+A key challenge in either variation was how to plan autonomous
 descent and corresponding ascent paths for the deployed, tethered Axel
 robot in rocky extra-planetary terrains.  A solution
 framework was presented which projected this complex problem to a
@@ -314,7 +307,9 @@ utilize such solutions is the DuAxel rover design, which fits these
 specifications already. Nevertheless, one can also apply this approach
 to a pair of Lemur IIb robots free-climbing a vertical and jagged
 cliff face or even a pair of traditional wheeled rovers descending a
-steep and rocky mountainside.
+steep and rocky mountainside. Moreover, exciting future extensions of this 
+work include the extension of this work to larger (either in number of 
+rovers per team, or number of tethered pairs) teams of tethered rovers.  
 
 %TABS Roadmap applicability
 As this proposal is developed with the overall goal of providing more robust and 
@@ -346,20 +341,6 @@ role, a rover encounters an unknown obstacle obstructing its planned
 path, which we'll call the ``reevaluation'' case (addressed in the
 planar case in previous, related work \cite{axel_online}).
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-  \begin{center}
-    \vspace{-0.3in}
-    \includegraphics[width=0.48\textwidth, right]{tether_desnag.jpg}
-  \end{center}
-  \vspace{-0.4in}
-  \caption{During a coordinated descent down a rocky extra-planetary
-    surface, the tethered rover pair encounters an unplanned snag of
-    the tether with a rock in the terrain (red). The situation is
-    resolved by using the coordinated wave-inducing control strategy
-    (green arrows indicate controls applied) to free the tether.}
-  \label{fig:tethersnag}
-\end{wrapfigure}
-
 % reevaluation case
 
 In the ``snagging'' case [Fig. \ref{fig:tethersnag}], we propose to
@@ -385,6 +366,19 @@ controller), as it's possible that reacting to forces incurred is a
 more feasible solution than accurately predicting them ahead of time.
 
 % integration case: online re-planning wrt coordination between avoidance control and motion planning algo
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \vspace{-0.3in}
+    \includegraphics[width=0.48\textwidth, right]{tether_desnag.jpg}
+  \end{center}
+  \vspace{-0.4in}
+  \caption{During a coordinated descent down a rocky extra-planetary
+    surface, the tethered rover pair encounters an unplanned snag of
+    the tether with a rock in the terrain (red). The situation is
+    resolved by using the coordinated wave-inducing control strategy
+    (green arrows indicate controls applied) to free the tether.}
+  \label{fig:tethersnag}
+\end{wrapfigure}
 
 In the ``reevaluation'' case of encountering an unmodeled obstacle in our
 path, what we must first decide is whether or not we can configure our
@@ -423,18 +417,6 @@ the control policy once it has successfully reached the target state.
   difficult terrain while the rovers alternate exploratory and
   stabilizing roles. }
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-  \begin{center}
-	\vspace{-0.4in}	
-	\includegraphics[width=0.48\textwidth, left]{descent_2.png}
-  \end{center}
-  \vspace{-0.2in}
-  \label{fig:descent}
-  \caption{Conceptualized time lapse of coordinated descent of a tethered robot pair. Tether shown in black, computed 
-  waypoints in green.} \vspace{-.2in}
-\end{wrapfigure}
-
-
 %Making use of the control strategy presented above when faced with
 %unforeseen obstacles and situations, we can now outline our strategy
 %for robustly solving the motion planning problem of the coordinated
@@ -453,6 +435,16 @@ as a module and then re-plan.  Importantly, re-planning under this
 strategy only requires re-computing the path between the current set
 of waypoints, as opposed to the trajectory of the entire traversal.
 
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+  \vspace{-0.4in} 
+  \includegraphics[width=0.48\textwidth, left]{descent_2.png}
+  \end{center}
+  \vspace{-0.2in}
+  \label{fig:descent}
+  \caption{Conceptualized time lapse of coordinated descent of a tethered robot pair. Tether shown in black, computed 
+  waypoints in green.} \vspace{-.2in}
+\end{wrapfigure}
 %Solution Sampling-based
 
 Planning between two waypoints in the full 3D workspace and taking
