@@ -1,0 +1,94 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{wrapfig}
+\usepackage{enumitem}
+
+\usepackage[explicit]{titlesec}
+
+% Margins
+\topmargin=0in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9in
+\headsep=0.5em 
+
+\linespread{1} % Line spacing
+
+% list spacing
+\setlist{nosep}
+
+% caption spacing
+\setlength\belowcaptionskip{-5pt}
+
+% \bibliographystyle{plain}
+
+\titleformat{\section}
+  {\bfseries}{\thesection}{0em}{#1}
+\titlespacing*{\section}{0em}{0em}{0em}[0em]
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\AuthorName} % Top left header
+\chead{\Title} % Top center header
+\rhead{\Subject} % Top right header
+\fancyfoot{}
+% \lfoot{\lastxmark} % Bottom left footer
+% \cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+% \renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength{\parskip}{0.4em}
+\setlength\parindent{10pt} % Removes all indentation from paragraphs
+
+
+\newcommand{\Title}{Personal Statement} % Assignment title
+\newcommand{\Subject}{NSTRF 2016}
+\newcommand{\AuthorName}{Colin Rennie} % Your name
+
+\begin{document}
+\newpage
+
+\noindent\textbf{Introduction \& Career Goals }
+\vspace{-0.3em}
+\input{01_goals}
+
+\noindent\textbf{Prior Experience }
+\vspace{-0.3em}
+\input{02_background}
+
+\noindent\textbf{Graduate Work }
+\vspace{-0.3em}
+\input{03_graduate}
+
+\bibliographystyle{ieeetr}
+\small{\bibliography{bibl.bib}}
+
+\end{document}
