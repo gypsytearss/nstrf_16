@@ -69,7 +69,7 @@
 \renewcommand\headrulewidth{0.4pt} % Size of the header rule
 % \renewcommand\footrulewidth{0.4pt} % Size of the footer rule
 
-\setlength{\parskip}{0.3em}
+\setlength{\parskip}{0.2em}
 \setlength\parindent{10pt} % Removes all indentation from paragraphs
 
 
@@ -171,39 +171,21 @@ mission of the International Space Station.
 
 {\bf\noindent Relevant Background on Tethered Rovers}
 
-Recent research into robot designs for the traversal of harsh and
-difficult terrains has featured several different designs with
-alternative means of locomotion. Certain systems include an actuated
-winch or spooled tether used for communication and/or stability while
-locomoting.  Notable examples include an eight-legged walking robot
-attached to a stationary base [Fig. \ref{fig:dante}] and a pair of
-two-wheeled differential drive robots connected with a soft tether
-[Fig. \ref{fig:duaxel}]. Even more novel recent robot designs could
-benefit from the presence of a tether attachment to an exploratory
-counterpart. This list includes Lemur IIb, a four-legged climbing
-robot [Fig. \ref{fig:lemur}], which could potentially use an actuated
-tether to swing its counterpart onto protruding overhangs and then, in
-turn, rappel from the stabilized counterpart robot in order to reach
-the overhang safely.
-
 %Dante II (& lemur II?)
+Recent research into robot designs for the traversal of harsh and difficult terrains has
+featured several different designs with alternative means of locomotion. The Dante II robot
+design consisted of eight legs for locomotion, an actuated winch used for rappelling down
+steep and difficult terrain from a static anchor point, and a variety of sensing equipment for
+data retrieval \cite{dante_design}. In 1994 the system was deployed into Mount Spurr, an active volcanic site,
+in order to record data for further scientific analysis. During the mission the robot suffered
+from a failure where the robot incurred a lateral force at its contact point with the tether, fell
+over, and was not able to correct itself \cite{dante_results}. Apart from this occurrence, however, the 5-day
+mission was regarded as a success in showing the capabilities of tethered robotic systems to
+act as ``surrogate scientists''; exploring where humans would not otherwise be able.
 
-The Dante II robot design consisted of eight legs for locomotion, an actuated 
-winch used for rappelling down steep and difficult terrain
-from a static anchor point, and a variety of sensing equipment for data 
-retrieval \cite{dante_design}.  
-In 1994 the system was deployed into Mount Spurr, an active
-volcanic site, in order to record data for further scientific
-analysis. During the mission the robot suffered from a
-failure where the robot incurred a lateral force at its contact point
-with the tether, fell over, and was not able to correct itself \cite{dante_results}. Apart
-from this occurrence, however, the 5-day mission was regarded as a
-success in showing the capabilities of tethered robotic systems to act
-as ``surrogate scientists''; exploring where humans would not
-otherwise be able.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-0.4in}
+  \vspace{-0.2in}
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.95\linewidth]{axel_deploy}
@@ -225,58 +207,52 @@ otherwise be able.
   \label{fig:dsolution}
   \vspace{-0.1in}
   \caption{(a) Conceptualized descent terrain for Axel II mission (b) example projection of terrain to 2D plane
-  (c) example solution: viable controllable regions for ascent (shaded), naive shortest path (red), shortest path within 
-  viable homotopy class (green). Images: \cite{ axel_planning}. }
+  (c) example solution: viable controllable regions for ascent (shaded), naive shortest path (red), shortest path within
+  viable homotopy class (green). }
 \end{wrapfigure}
 
 %Axel platform (+picture)
 
-More recently, NASA's Jet Propulsion Laboratory (JPL) has been working on a
-two-wheeled differential drive tethered robot, appropriately named
-``Axel''. The Axel II robot design features collapsible, paddled
-wheels, making the system more appropriate for longer and more remote
-missions as this design is more robust to issues such as
-high-centering and failures such as that encountered by Dante II
-\cite{axel_design}. Two variants of the system are
-presented: one in which Axel is attached to a stationary anchor point,
-and a second where two Axel robots are tethered together and deployed
+More recently, NASA's Jet Propulsion
+Laboratory (JPL) has been working on
+a two-wheeled differential drive tethered
+robot, appropriately named ``Axel''. The
+Axel II robot design features collapsible,
+paddled wheels, making the system more appropriate
+for longer and more remote missions
+as this design is more robust to issues
+such as high-centering and failures such as
+that encountered by Dante II \cite{axel_design}. Two variants
+of the system are presented: one in
+which Axel is attached to a stationary anchor
+point, and a second where two Axel
+robots are tethered together and deployed
 via a central support beam (``DuAxel'') \cite{duaxel}.
 
 %Motion planning solution
 
-A key challenge in either variation was how to plan autonomous
-descent and corresponding ascent paths for the deployed, tethered Axel
-robot in rocky extra-planetary terrains.  A solution
-framework was presented which projected this complex problem to a
-two-dimensional plane. It built on foundational work addressing the
-tether constraint problem from a computational geometry perspective
-\cite{ties_that_bind, min_homotopies} and extended this approach to
-produce ``controllable'' paths by deriving equations of motion arising
-from the constraints of the Axel robot \cite{axel_planning}. The
-resulting algorithm first plans the more difficult ascent path and
-then uses the solution to limit its search for viable descent paths
-lying in the same homotopy class.
+A key challenge in either variation was how
+to plan autonomous descent and corresponding
+ascent paths for the deployed, tethered
+Axel robot in rocky extra-planetary terrains.
+A solution framework was presented which
+projected this complex problem to a two-dimensional
+plane. It built on foundational
+work addressing the tether constraint problem
+from a computational geometry perspective
+\cite{ties_that_bind, min_homotopies} and extended this approach to produce ``controllable'' paths by deriving equations
+of motion arising from the constraints of the Axel robot \cite{axel_planning}. The resulting algorithm first
+plans the more difficult ascent path and then uses the solution to limit its search for viable
+descent paths lying in the same homotopy class.
 
-%Problems
-%   Quasi-static, no cable friction with ground assumed
-%   solution is planar, over-simplifying the environment
-%   assumes static anchor point (base unit)
-
-While this solution represents substantial progress well-grounded in
-foundational work, the assumptions and simplifications may limit its
-applicability. In particular, projecting complex 3D terrain
-environments in 2D and representing obstacles as simple polygons
-[Fig. \ref{fig:planarterrain}] may be not adequate for many realistic
-extra-planetary terrains.  This strategy also assumes perfect prior
-knowledge of the environment, frictionless interaction of the tether
-with the ground plane, and quasi-static motion of the robot.
-Furthermore, it remains an open question as to how best to plan
-autonomous motions for the DuAxel configuration where two dynamic
-robots take turns belaying each other.
-
-% \kostas{it seems to me that you are not describing any of the (non-NASA)
-%   references that I forwarded you about planning for tethered robots -
-% you didn't find them useful?}
+While this solution represents substantial progress well-grounded in foundational work,
+the assumptions and simplifications may limit its applicability. In particular, projecting
+complex 3D terrain environments in 2D and representing obstacles as simple polygons [Fig. \ref{fig:planarterrain}]
+may be not adequate for many realistic extra-planetary terrains. This strategy also
+assumes perfect prior knowledge of the environment, frictionless interaction of the tether
+with the ground plane, and quasi-static motion of the robot. Furthermore, it remains an
+open question as to how best to plan autonomous motions for the DuAxel configuration
+where two dynamic robots take turns belaying each other.
 
 %-----------------------------------------------------
 %---------------- Proposed Research ------------------
@@ -368,7 +344,7 @@ more feasible solution than accurately predicting them ahead of time.
 % integration case: online re-planning wrt coordination between avoidance control and motion planning algo
 \begin{wrapfigure}{r}{0.5\textwidth}
   \begin{center}
-    \vspace{-0.3in}
+    \vspace{-0.6in}
     \includegraphics[width=0.48\textwidth, right]{tether_desnag.jpg}
   \end{center}
   \vspace{-0.4in}
@@ -378,7 +354,9 @@ more feasible solution than accurately predicting them ahead of time.
     resolved by using the coordinated wave-inducing control strategy
     (green arrows indicate controls applied) to free the tether.}
   \label{fig:tethersnag}
+  \vspace{-0.2in}
 \end{wrapfigure}
+
 
 In the ``reevaluation'' case of encountering an unmodeled obstacle in our
 path, what we must first decide is whether or not we can configure our
@@ -437,7 +415,7 @@ of waypoints, as opposed to the trajectory of the entire traversal.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
   \begin{center}
-  \vspace{-0.4in} 
+  \vspace{-0.2in} 
   \includegraphics[width=0.48\textwidth, left]{descent_2.png}
   \end{center}
   \vspace{-0.2in}
